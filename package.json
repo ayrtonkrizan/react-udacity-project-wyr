@@ -5,7 +5,13 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-icons": "^3.7.0",
+    "react-redux": "^7.1.0",
+    "react-redux-loading": "^1.0.1",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -27,5 +33,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This application is a poll store that his users are able to share their opnions and create new polls.",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayrtonkrizan/react-udacity-project-wyr.git"
+  },
+  "author": "Ayrton Krizan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayrtonkrizan/react-udacity-project-wyr/issues"
+  },
+  "homepage": "https://github.com/ayrtonkrizan/react-udacity-project-wyr#readme"
 }
