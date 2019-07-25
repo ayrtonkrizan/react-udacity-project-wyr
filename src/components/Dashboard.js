@@ -16,6 +16,7 @@ class Dashboard extends Component {
         return this.state.category === ANSWERED? 'btn btn-success' : 'btn btn-outline-success'
     }
     handleToggleCategory = e =>{
+
         this.setState({
             category: this.state.category === UNANSWERED? ANSWERED : UNANSWERED
         })
@@ -29,6 +30,7 @@ class Dashboard extends Component {
                 <div className="d-flex justify-content-around flex-wrap">
                     {Object.keys(questions)
                         .map(key => {
+                            console.log(questions[key])
                             return(
                                 <Question key={key} id ={key}/>
                             )}
