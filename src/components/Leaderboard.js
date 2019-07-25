@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Leaderboard extends Component {
     render(){
         return(
-            <div></div>
+            <div>Leaderboard</div>
         )
     }
 }
 
-export default Leaderboard;
+export default connect()(Leaderboard);

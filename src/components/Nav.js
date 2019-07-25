@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 class Nav extends Component {
     render() {
@@ -11,23 +11,23 @@ class Nav extends Component {
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <a className="navbar-brand" href="#">Would You Rather?</a>
+                <NavLink to='/' className="navbar-brand">Would You Rather?</NavLink>
 
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">Home</a>
+                        <li className="nav-item">
+                            <NavLink exact to='/' className="nav-link" activeClassName='active'>Home</NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Leaderboard</a>
+                            <NavLink to='/leaderboar' className="nav-link" activeClassName='active'>Leaderboard</NavLink>
                         </li>
                     </ul>
                 </div>
                 {
                     user && (
-                    <div class="navbar-text">
-                        {user.name} <span className='font-italic small'>sign-out</span><img className="avatar-nav" src={user.avatarURL} alt={`${user.name} avatar`}/> 
-                    </div>)
+                    <NavLink to="/login" className="navbar-text">
+                        {user.name} <span className='font-italic small'>sign-out </span><img className="avatar-nav" src={user.avatarURL} alt={`${user.name} avatar`}/> 
+                    </NavLink>)
                 }
             </nav>
         )

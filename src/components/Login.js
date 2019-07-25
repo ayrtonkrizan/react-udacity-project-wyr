@@ -15,7 +15,7 @@ class Login extends Component {
                         <div className="row">
                             {
                                 Object.keys(users).map(key=>(
-                                    <button type="button" class="btn btn-outline-success btn-lg btn-block">
+                                    <button key={key} type="button" className="btn btn-outline-success btn-lg btn-block">
                                         <img className="avatar-login" src={users[key].avatarURL} alt={`${users[key].name} avatar`}/> {users[key].name}
                                     </button>
                                 ))

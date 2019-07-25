@@ -22,7 +22,7 @@ class Dashboard extends Component {
     }
     render(){
         const { category } = this.state
-        const {users, questions} = this.props;
+        const {questions} = this.props;
         return(
             <div className='container center'>
                 <h2 className="text-center dashboard-title">I Wanna See <button onClick={this.handleToggleCategory} className={this.getCategoryClass()}>{category}</button> questions!</h2>

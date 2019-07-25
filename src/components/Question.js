@@ -18,8 +18,8 @@ class Question extends Component {
                 <div className="card-body">
                     <h3 className="card-text text-center">Would You Rather?</h3>
                     <div className="row">
-                        <button type="button" class="btn btn-outline-success btn-lg btn-block question-option">A. {question.optionOne.text}</button>
-                        <button type="button" class="btn btn-outline-success btn-lg btn-block question-option">B. {question.optionTwo.text}</button>
+                        <button type="button" className="btn btn-outline-success btn-lg btn-block question-option">A. {question.optionOne.text}</button>
+                        <button type="button" className="btn btn-outline-success btn-lg btn-block question-option">B. {question.optionTwo.text}</button>
                     </div>
                 </div>
             </div>
