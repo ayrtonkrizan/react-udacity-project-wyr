@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { LoadingBar } from 'react-redux-loading'
 import { handleInitialData } from '../actions/shared';
@@ -12,14 +12,14 @@ class App extends Component{
   }
   render(){
     return(
-      <Fragment>
+      <div className ='container'>
         <LoadingBar />
         {this.props.loading ? null : (
           <div>
             <Dashboard />
           </div>
         )}
-      </Fragment>
+      </div>
     )
   }
 }

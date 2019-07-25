@@ -5,9 +5,46 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #F2F4F4;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+
+.avatar {
+	border-radius: 50%;
+	max-height: 50px;
+	float: left;
+	margin-right: 12px;
+	margin-top: 5px;
+	vertical-align: middle;
+}
+
+.card-header {
+  background-color: #00FF7F;
+  width: 100%;
+  padding: 10px;
+
+  position: relative;
+  z-index: 10;
+}
+.card-subtitle{
+  color:#fff;
+  margin-top: 10px;
+}
+
+.card{
+  padding: 0;
+  margin: 5px;
+}
+.question-option {
+  height: 75px;
+}
+
+.dashboard-title{
+  margin: 25px;
+  font-weight: bold;
 }
