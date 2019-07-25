@@ -5,6 +5,7 @@ import { handleInitialData } from '../actions/shared';
 
 
 import Dashboard from './Dashboard';
+import Login from './Login';
 
 class App extends Component{
   componentDidMount(){
@@ -16,7 +17,7 @@ class App extends Component{
         <LoadingBar />
         {this.props.loading ? null : (
           <div>
-            <Dashboard />
+            <Login></Login>
           </div>
         )}
       </div>
