@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { LoadingBar } from 'react-redux-loading'
 import { handleInitialData } from '../actions/shared';
@@ -6,21 +6,23 @@ import { handleInitialData } from '../actions/shared';
 
 import Dashboard from './Dashboard';
 import Login from './Login';
+import Nav from './Nav';
 
-class App extends Component{
-  componentDidMount(){
+class App extends Component {
+  componentDidMount() {
     this.props.dispatch(handleInitialData());
   }
-  render(){
-    return(
-      <div className ='container'>
+  render() {
+    return (
+      <Fragment>
+        <Nav />
         <LoadingBar />
         {this.props.loading ? null : (
-          <div>
-            <Login></Login>
+          <div className='container'>
+            <Dashboard />
           </div>
         )}
-      </div>
+      </Fragment>
     )
   }
 }
