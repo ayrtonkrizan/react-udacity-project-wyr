@@ -73,3 +73,8 @@ code {
 	margin-right: 20px;
 	vertical-align: middle;
 }
+
+.lb-header{
+  font-weight: bold;
+  text-decoration: underline;
+}
