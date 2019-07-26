@@ -33,10 +33,11 @@ This project was designed using [Bootstrap 4](https://getbootstrap.com/)
 
 ## Screenshots
 ### Mobile View
-<img align="left" width="150" height="265" src="/screenshots/login_mobile.png">
-<img align="left" width="150" height="265" src="/screenshots/dashboard_mobile.png">
-<img align="left" width="150" height="265" src="/screenshots/dashboard_mobile2.png">
-<img align="left" width="150" height="265" src="/screenshots/question_add_mobile.png">
+<img align="left" width="175" height="300" src="/screenshots/login_mobile.png">
+<img align="left" width="175" height="300" src="/screenshots/dashboard_mobile.png">
+<img align="left" width="175" height="300" src="/screenshots/dashboard_mobile2.png">
+<img align="left" width="175" height="300" src="/screenshots/question_add_mobile.png">
+
 ### Web View
 <img align="left" width="750" height="350" src="/screenshots/dashboard_web.png">
 <img align="left" width="750" height="350" src="/screenshots/dashboard_web2.png">
