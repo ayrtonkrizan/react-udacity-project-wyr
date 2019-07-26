@@ -4,16 +4,23 @@ import { NavLink } from 'react-router-dom'
 
 
 class Nav extends Component {
+    state = {
+        collapse: 'collapse'
+    }
+    toggleMenu = () =>{
+        let collapse = this.state.collapse===''? 'collapse': '';
+        this.setState({collapse: collapse});
+    }
     render() {
         const { user } = this.props
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-success">
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <button className="navbar-toggler" type="button" onClick={this.toggleMenu}>
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <NavLink to='/' className="navbar-brand">Would You Rather?</NavLink>
 
-                <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <div className={`${this.state.collapse} navbar-collapse`}>
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li className="nav-item">
                             <NavLink exact to='/question/add' className="nav-link" activeClassName='active'>New Question</NavLink>
