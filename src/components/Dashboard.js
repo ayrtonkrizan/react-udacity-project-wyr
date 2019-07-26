@@ -21,11 +21,13 @@ class Dashboard extends Component {
             category: this.state.category === UNANSWERED? ANSWERED : UNANSWERED
         })
     }
+    
     render(){
         const { category } = this.state
         const { answeredQuestionIds, unansweredQuestionIds } = this.props;
         let questionsToShow = {};
         
+        console.log(answeredQuestionIds);
         if(category ===UNANSWERED)
             questionsToShow = unansweredQuestionIds
         else
@@ -46,12 +48,9 @@ function mapStateToProps({ users, questions, authedUser }) {
         users,
         questions,
         authedUser,
-        answeredQuestionIds: Object.keys(questions)
-								.filter((question) => (questions[question].optionOne.votes.indexOf(authedUser) > -1) || (questions[question].optionTwo.votes.indexOf(authedUser) > -1))
-								.sort((a,b) => questions[b].timestamp - questions[a].timestamp),
-	    unansweredQuestionIds: Object.keys(questions)
-								.filter((question) => (questions[question].optionOne.votes.indexOf(authedUser) === -1) && (questions[question].optionTwo.votes.indexOf(authedUser) === -1))
-								.sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+        answeredQuestionIds: Object.keys(users[authedUser].answers).sort((a,b) => questions[b].timestamp - questions[a].timestamp),
+	    unansweredQuestionIds: Object.keys(questions).filter(question => Object.keys(users[authedUser].answers).indexOf(question) === -1)
+                                .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
     }
   }
 export default connect(mapStateToProps)(Dashboard);

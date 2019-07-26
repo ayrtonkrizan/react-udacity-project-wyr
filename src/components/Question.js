@@ -69,9 +69,7 @@ const Option = props =>{
                 <p className="my-0 py-0">{text}</p>
                 <p className="my-0 py-0">{`${option.length} Vote${option.length>1 ?'s':''} - ${parseInt(option.length/votes.length*100)}%`}</p>
             </div>
-        )
-        
-        
+        )   
     }
     else
         return (
