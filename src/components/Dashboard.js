@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Question from './Question';
+import { QuestionList } from './Question';
 
 const UNANSWERED = 'Unanswered';
 const ANSWERED = 'Answered';
@@ -31,19 +31,10 @@ class Dashboard extends Component {
         else
             questionsToShow = answeredQuestionIds
 
-        console.log(questionsToShow)
         return(
             <div className='container center'>
                 <h2 className="text-center dashboard-title">I Wanna See <button onClick={this.handleToggleCategory} className={this.getCategoryClass()}>{category}</button> questions!</h2>
-                <div className="d-flex justify-content-around flex-wrap">
-                    {questionsToShow
-                        .map(key => {
-                            return(
-                                <Question key={key} id ={key}/>
-                            )}
-                        )
-                    }
-                </div>
+                <QuestionList questionsIds={questionsToShow}/>
 
             </div>
         )

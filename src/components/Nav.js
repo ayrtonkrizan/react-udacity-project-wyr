@@ -25,7 +25,7 @@ class Nav extends Component {
                 </div>
                 {
                     user && (
-                    <NavLink to='logout' className="navbar-text">
+                    <NavLink to='/logout' className="navbar-text">
                         {user.name} <span className='font-italic small'>sign-out </span><img className="avatar-nav" src={user.avatarURL} alt={`${user.name} avatar`}/> 
                     </NavLink>)
                 }

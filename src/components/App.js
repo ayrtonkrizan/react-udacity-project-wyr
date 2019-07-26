@@ -11,13 +11,14 @@ import Login from './Login';
 import Logout from './Logout';
 import Leaderboard from './Leaderboard';
 import Nav from './Nav';
+import {QuestionDetail} from './Question';
 
 
 const PrivateRoute = ({ component: Component, ...props }) => (
   <Route {...props} render={(x) => {
     return (
     (props.authedUser !== null && props.authedUser !== undefined)
-      ? <Component {...props} />
+      ? <Component {...props} {...x} />
       : <Redirect to={{
           pathname: '/login',
           state: { from: props.location }
@@ -33,7 +34,6 @@ class App extends Component {
     this.props.dispatch(setAuthedUser(null));
   }
   render() {
-    console.log('rendereing apps', this.props.login);
     return (
       <Router>
         <Fragment>
@@ -42,7 +42,7 @@ class App extends Component {
           {this.props.loading ? null : (
             <div className='container'>
               <PrivateRoute path='/' exact component={Dashboard} authedUser={this.props.login} />
-              <PrivateRoute path='/questions/:id' component={Login} authedUser={this.props.login} />
+              <PrivateRoute path='/questions/:id' component={QuestionDetail} authedUser={this.props.login} />
               <PrivateRoute path='/leaderboard' exact component={Leaderboard} authedUser={this.props.login}/>
               <Route path='/login' exact component={Login} />
               <Route path='/logout' exact component={Logout} logout={this.logout}/>
