@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { formatDate } from '../utils/helpers';
 import { handleSaveQuestionAnswer } from '../actions/questions';
+import Page404 from './Page404';
 
 const QuestionVoted = (props) => {
     const{option, users} = props
@@ -124,7 +125,7 @@ class Question extends Component {
         const {questions, users, id, withDetails, authedUser}  = this.props;
         const question = questions[id];
         if(!question)
-            return(<h1 className="btn-warning">Hey this id doesn't exists!</h1>)
+            return(<Page404 location={{pathname:`/questions/${id}`}}/>)
         const author = users[question.author] ||{name:'', avatarURL:''}
         const showDetail = (withDetails && users[authedUser].answers[id])?true:false
         console.log(showDetail);
