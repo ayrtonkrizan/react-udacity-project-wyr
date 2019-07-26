@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { formatDate } from '../utils/helpers'
+import { formatDate } from '../utils/helpers';
+import { handleSaveQuestionAnswer } from '../actions/questions';
 
 const QuestionVoted = (props) => {
     const{option, users} = props
@@ -53,11 +54,13 @@ export const QuestionList = (props)=>{
 }
 
 const Option = props =>{
-    const {authedUser, votes, option, text} = props; 
+    const {authedUser, votes, option, text, handleOption} = props; 
     let classBtn = "btn btn-outline-success btn-lg btn-block question-option";
     let textBtn = text;
+    let disabledBtn = false;
     if(votes.find(v=> v === authedUser)){
-        textBtn = `Votes - ${option.length} - ${option.length/votes.length*100}%`;
+        textBtn = `Votes - ${option.length} - ${parseInt(option.length/votes.length*100)}%`;
+        disabledBtn = true;
         if(option.find(v=> v=== authedUser))
             classBtn = "btn btn-success btn-lg btn-block question-option disabled"
         else
@@ -65,13 +68,29 @@ const Option = props =>{
     }
 
     return (
-        <button type="button" className={classBtn}>{textBtn}</button>
+        <button type="button" className={classBtn} onClick={handleOption} disabled={disabledBtn}>{textBtn}</button>
     )
 }
 
 const QuestionCard = props =>{
-    const {question, author, id, authedUser} = props;
+    const {question, author, id, authedUser, handleVote} = props;
     const VoteList = question.optionOne.votes.concat(question.optionTwo.votes);
+
+    const handleOptionA = () =>{
+        handleVote({
+            authedUser,
+            qid: id,
+            answer: 'optionOne'
+        })
+    }
+
+    const handleOptionB = () =>{
+        handleVote({
+            authedUser,
+            qid: id,
+            answer: 'optionTwo'
+        })
+    }
     return (
         <div className="card col-md-3">
             <NavLink 
@@ -88,24 +107,30 @@ const QuestionCard = props =>{
             <div className="card-body">
                 <h3 className="card-text text-center">Would You Rather?</h3>
                 <div className="row">
-                    <Option text={`A. ${question.optionOne.text}`} votes={VoteList} authedUser={authedUser} option={question.optionOne.votes}/>
-                    <Option text={`B. ${question.optionTwo.text}`} votes={VoteList} authedUser={authedUser} option={question.optionTwo.votes}/>
+                    <Option text={`A. ${question.optionOne.text}`} votes={VoteList} authedUser={authedUser} option={question.optionOne.votes} handleOption={handleOptionA}/>
+                    <Option text={`B. ${question.optionTwo.text}`} votes={VoteList} authedUser={authedUser} option={question.optionTwo.votes} handleOption={handleOptionB}/>
                 </div>
             </div>
         </div>
     )
 }
 
-class Question extends Component {    
+class Question extends Component {
+    handleVote = answerObj => {
+        const { dispatch } = this.props
+        dispatch(handleSaveQuestionAnswer(answerObj))
+    }
     render() {
         const {questions, users, id, withDetails, authedUser}  = this.props;
         const question = questions[id];
         const author = users[question.author] ||{name:'', avatarURL:''}
+        const showDetail = (withDetails && users[authedUser].answers[id])?true:false
+        console.log(showDetail);
         return(
             <Fragment>
-                <QuestionCard question={question} author={author} id={id} authedUser={authedUser}/>
-                {withDetails === true && <QuestionVoted users={users} option={question.optionOne}/>}
-                {withDetails === true && <QuestionVoted users={users} option={question.optionTwo}/>}
+                <QuestionCard question={question} author={author} id={id} authedUser={authedUser} handleVote={this.handleVote}/>
+                {showDetail === true && <QuestionVoted users={users} option={question.optionOne}/>}
+                {showDetail === true && <QuestionVoted users={users} option={question.optionTwo}/>}
             </Fragment>
         )
     }
