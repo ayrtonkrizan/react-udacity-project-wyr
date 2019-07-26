@@ -17,6 +17,7 @@ class QuestionAdd extends Component {
     onSubmit = e =>{
         e.preventDefault();
         const {authedUser, dispatch} = this.props;
+
         const newQuestion = {
             authedUser,
             optionOneText: this.optionA.current.value,
@@ -45,14 +46,14 @@ class QuestionAdd extends Component {
                         <div className="input-group-prepend">
                             <div className="input-group-text">A</div>
                         </div>
-                        <input ref={this.optionA} type="text" className="form-control" name="optionA" placeholder="Type option A"/>
+                        <input required ref={this.optionA} type="text" className="form-control" name="optionA" placeholder="Type option A"/>
                     </div>
 
                     <div className="input-group">
                         <div className="input-group-prepend">
                             <div className="input-group-text">B</div>
                         </div>
-                        <input ref={this.optionB} type="text" className="form-control" name="optionB" placeholder="Type option B"/>
+                        <input required ref={this.optionB} type="text" className="form-control" name="optionB" placeholder="Type option B"/>
                     </div>
                     <button type="submit" className="btn btn-success btn-lg btn-block">Add Question</button>
                 </form>
