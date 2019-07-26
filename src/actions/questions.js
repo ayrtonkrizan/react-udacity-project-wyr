@@ -1,4 +1,4 @@
-import { _saveQuestionAnswer as saveQuestionAnswer, _saveQuestion as saveQuestion } from '../utils/_DATA'
+import { saveQuestionAnswer, saveQuestion } from '../utils/api'
 import { handleInitialData } from './shared'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
