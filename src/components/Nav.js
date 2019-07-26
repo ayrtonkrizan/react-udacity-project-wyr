@@ -16,7 +16,7 @@ class Nav extends Component {
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li className="nav-item">
-                            <NavLink exact to='/' className="nav-link" activeClassName='active'>Home</NavLink>
+                            <NavLink exact to='/question/add' className="nav-link" activeClassName='active'>New Question</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink to='/leaderboard' className="nav-link" activeClassName='active'>Leaderboard</NavLink>

@@ -128,7 +128,6 @@ class Question extends Component {
             return(<Page404 location={{pathname:`/questions/${id}`}}/>)
         const author = users[question.author] ||{name:'', avatarURL:''}
         const showDetail = (withDetails && users[authedUser].answers[id])?true:false
-        console.log(showDetail);
         return(
             <Fragment>
                 <QuestionCard question={question} author={author} id={id} authedUser={authedUser} handleVote={this.handleVote}/>

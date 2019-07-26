@@ -12,6 +12,7 @@ import Logout from './Logout';
 import Leaderboard from './Leaderboard';
 import Nav from './Nav';
 import {QuestionDetail} from './Question';
+import QuestionAdd from './QuestionAdd';
 import Page404 from './Page404';
 
 
@@ -47,6 +48,7 @@ class App extends Component {
                 <PrivateRoute path='/' exact component={Dashboard} authedUser={this.props.login} />
                 <PrivateRoute path='/questions/:id' component={QuestionDetail} authedUser={this.props.login} />
                 <PrivateRoute path='/leaderboard' exact component={Leaderboard} authedUser={this.props.login}/>
+                <PrivateRoute path='/question/add' exact component={QuestionAdd} authedUser={this.props.login}/>
                 <Route path='/login' exact component={Login} />
                 <Route path='/logout' exact component={Logout} logout={this.logout}/>
                 <Route component={Page404} />
