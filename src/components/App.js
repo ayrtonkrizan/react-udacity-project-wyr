@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { LoadingBar } from 'react-redux-loading'
 import { handleInitialData } from '../actions/shared';
@@ -12,6 +12,7 @@ import Logout from './Logout';
 import Leaderboard from './Leaderboard';
 import Nav from './Nav';
 import {QuestionDetail} from './Question';
+import Page404 from './Page404';
 
 
 const PrivateRoute = ({ component: Component, ...props }) => (
@@ -25,6 +26,7 @@ const PrivateRoute = ({ component: Component, ...props }) => (
         }} />
   )}} />
 )
+
 
 class App extends Component {
   componentDidMount() {
@@ -41,11 +43,14 @@ class App extends Component {
           <LoadingBar />
           {this.props.loading ? null : (
             <div className='container'>
-              <PrivateRoute path='/' exact component={Dashboard} authedUser={this.props.login} />
-              <PrivateRoute path='/questions/:id' component={QuestionDetail} authedUser={this.props.login} />
-              <PrivateRoute path='/leaderboard' exact component={Leaderboard} authedUser={this.props.login}/>
-              <Route path='/login' exact component={Login} />
-              <Route path='/logout' exact component={Logout} logout={this.logout}/>
+              <Switch>
+                <PrivateRoute path='/' exact component={Dashboard} authedUser={this.props.login} />
+                <PrivateRoute path='/questions/:id' component={QuestionDetail} authedUser={this.props.login} />
+                <PrivateRoute path='/leaderboard' exact component={Leaderboard} authedUser={this.props.login}/>
+                <Route path='/login' exact component={Login} />
+                <Route path='/logout' exact component={Logout} logout={this.logout}/>
+                <Route component={Page404} />
+              </Switch>
             </div>
           )}
         </Fragment>

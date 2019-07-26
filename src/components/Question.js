@@ -123,6 +123,8 @@ class Question extends Component {
     render() {
         const {questions, users, id, withDetails, authedUser}  = this.props;
         const question = questions[id];
+        if(!question)
+            return(<h1 className="btn-warning">Hey this id doesn't exists!</h1>)
         const author = users[question.author] ||{name:'', avatarURL:''}
         const showDetail = (withDetails && users[authedUser].answers[id])?true:false
         console.log(showDetail);
@@ -145,4 +147,3 @@ function mapStateToProps({ users, questions, authedUser }, { id }) {
     }
 }
 const ConnectedQuestion = connect(mapStateToProps)(Question);
-// export default ConnectedQuestion;
