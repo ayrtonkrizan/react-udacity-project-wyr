@@ -2,7 +2,17 @@
 
 This application is a poll store that his users are able to share their opnions and create new polls.
 
-This project was built using React & Redux for the Udacity React Nanodegree Program.
+This project was built using React & Redux and designed with bootstrap css for the Udacity React Nanodegree Program.
+
+
+
+## Screenshots
+
+<img align="left" width="150" height="265" src="/screenshots/dashboard_mobile.png">
+<img align="left" width="150" height="265" src="/screenshots/dashboard_mobile2.png">
+<img align="left" width="600" height="350" src="/screenshots/leaderbard_web.png">
+<img align="left" width="600" height="350" src="/screenshots/question_detail_web.png">
+
 
 
 ## How to run the Project
