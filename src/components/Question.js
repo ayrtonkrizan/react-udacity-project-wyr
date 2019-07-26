@@ -57,20 +57,26 @@ export const QuestionList = (props)=>{
 const Option = props =>{
     const {authedUser, votes, option, text, handleOption} = props; 
     let classBtn = "btn btn-outline-success btn-lg btn-block question-option";
-    let textBtn = text;
-    let disabledBtn = false;
-    if(votes.find(v=> v === authedUser)){
-        textBtn = `Votes - ${option.length} - ${parseInt(option.length/votes.length*100)}%`;
-        disabledBtn = true;
-        if(option.find(v=> v=== authedUser))
-            classBtn = "btn btn-success btn-lg btn-block question-option disabled"
-        else
-            classBtn = "btn btn-outline-success btn-lg btn-block question-option disabled"
-    }
 
-    return (
-        <button type="button" className={classBtn} onClick={handleOption} disabled={disabledBtn}>{textBtn}</button>
-    )
+    if(votes.find(v=> v === authedUser)){
+        if(option.find(v=> v=== authedUser))
+            classBtn = "h-auto btn btn-success btn-lg btn-block question-option disabled"
+        else
+            classBtn = "h-auto btn btn-outline-success btn-lg btn-block question-option disabled"
+        
+        return(
+            <div className={classBtn}>
+                <p className="my-0 py-0">{text}</p>
+                <p className="my-0 py-0">{`${option.length} Vote${option.length>1 ?'s':''} - ${parseInt(option.length/votes.length*100)}%`}</p>
+            </div>
+        )
+        
+        
+    }
+    else
+        return (
+            <button type="button" className={classBtn} onClick={handleOption}>{text}</button>
+        )
 }
 
 const QuestionCard = props =>{
@@ -108,8 +114,8 @@ const QuestionCard = props =>{
             <div className="card-body">
                 <h3 className="card-text text-center">Would You Rather?</h3>
                 <div className="row">
-                    <Option text={`A. ${question.optionOne.text}`} votes={VoteList} authedUser={authedUser} option={question.optionOne.votes} handleOption={handleOptionA}/>
-                    <Option text={`B. ${question.optionTwo.text}`} votes={VoteList} authedUser={authedUser} option={question.optionTwo.votes} handleOption={handleOptionB}/>
+                    <Option text={`${question.optionOne.text}`} votes={VoteList} authedUser={authedUser} option={question.optionOne.votes} handleOption={handleOptionA}/>
+                    <Option text={`${question.optionTwo.text}`} votes={VoteList} authedUser={authedUser} option={question.optionTwo.votes} handleOption={handleOptionB}/>
                 </div>
             </div>
         </div>
